@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rahul — Admin</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+<header class="nav"><a class="logo" href="/">RAHUL<span>.</span></a><a href="/">← Website</a></header>
+<main class="admin-wrap">
+  <section id="loginBox" class="admin-card">
+    <p class="eyebrow">PRIVATE AREA</p><h1>Admin Login</h1>
+    <p class="muted">Sign in to upload and manage your portfolio work.</p>
+    <form id="loginForm"><input id="password" type="password" placeholder="Admin password" required><button class="btn primary">Login</button></form>
+    <p id="loginMsg" class="msg"></p>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="admin-head"><div><p class="eyebrow">PORTFOLIO MANAGER</p><h1>Upload your work</h1></div><button id="logout" class="btn ghost">Logout</button></div>
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h2>New Project</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <label>Category<select name="category" required><option value="3d">3D / Maya</option><option value="video">Video Editing</option><option value="graphic">Graphic Design / Posters</option><option value="aiugc">AI UGC Ads</option><option value="logo">Logo Design</option><option value="art">Art</option><option value="uiux">UI/UX &amp; Website</option></select></label>
+          <label>Project title<input name="title" maxlength="120" placeholder="e.g. Ducati 3D Render" required></label>
+          <label>Description<textarea name="description" maxlength="500" placeholder="Short project description"></textarea></label>
+          <div id="thumbnailField"><label>Thumbnail <span class="muted">(shown first on portfolio)</span><input name="thumbnail" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label><p class="hint" style="margin-top:6px">Used for Video Editing and AI UGC Ads.</p></div>
+          <div id="mayaFields" class="hidden">
+            <label>Project Image 1 <input name="image1" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+            <label>Project Image 2 <input name="image2" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+            <label>Project Image 3 <input name="image3" type="file" accept="image/jpeg,image/png,image/webp,image/gif"></label>
+            <label>GLB 3D Model <input name="glb" type="file" accept=".glb,model/gltf-binary,application/octet-stream"></label>
+            <p class="hint">3D / Maya projects require exactly 3 images + 1 GLB. Clients can rotate and zoom the model in the website.</p>
+          </div>
+          <div id="workFileField"><label>Work file <span class="muted">(actual image/video)</span><input name="file" type="file" accept="image/*,video/mp4,video/webm,video/quicktime"></label></div>
+          <button class="btn primary" type="submit">Upload & Publish</button>
+        </form>
+        <p class="hint">For 3D / Maya, each upload becomes a separate project with 3 images and an interactive GLB 360° viewer. Other categories keep the existing upload flow.</p>
+        <p id="uploadMsg" class="msg"></p>
+      </div>
+      <div class="admin-card"><h2>Published Work</h2><div id="adminProjects"></div></div>
+    </div>
+  </section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>
